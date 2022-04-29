@@ -6,7 +6,7 @@ import com.baglie.VirtualQueue.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -42,8 +42,6 @@ public class StudentService {
             user.setConnected(true);
         }
 
-        System.out.println("find All " + studentRepository.findAll());
-
         return user;
     }
 
@@ -76,7 +74,6 @@ public class StudentService {
             student.setPositionInQueue(position);
             position++;
         }
-        System.out.println(studentsInQueue);
 
         return studentsInQueue;
     }
@@ -111,7 +108,6 @@ public class StudentService {
             student.setPositionInQueue(position);
             position++;
         }
-        System.out.println(studentsInQueue);
 
         return studentsInQueue;
     }

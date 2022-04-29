@@ -30,14 +30,7 @@ public class QueueController {
     @MessageMapping("/login")
     @SendTo("/queue/responselogin")
     public User loginUser(@Payload User user){
-
-//        studentService.deleteAll();
-
-        System.out.println(user.getUsername() + "username");
-
         User userResult = studentService.saveStudent(user);
-
-        System.out.println("save result " + userResult);
 
         return userResult;
     }
@@ -48,8 +41,6 @@ public class QueueController {
         System.out.println(user);
 
         studentService.logout(user);
-        System.out.println(studentService.findAll());
-
         user.setConnected(false);
 
         return user;
@@ -58,7 +49,6 @@ public class QueueController {
     @MessageMapping("/leave")
     @SendTo("/queue/position")
     public List<DTOStudent> leaveQueue(@Payload User user){
-        System.out.println(studentService.findAll());
 
         return studentService.leaveQueue(user.getUsername());
     }
@@ -66,8 +56,6 @@ public class QueueController {
     @MessageMapping("/take")
     @SendTo("/queue/position")
     public List<DTOStudent> takeQueue(@Payload User user){
-
-        System.out.println(studentService.findAll());
 
         return studentService.takeQueue(user.getUsername());
     }
