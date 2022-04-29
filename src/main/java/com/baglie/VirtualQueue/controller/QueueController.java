@@ -39,7 +39,7 @@ public class QueueController {
     @SendTo("/queue/responselogout")
     public User logout(@Payload User user){
         System.out.println(user);
-
+        studentService.leaveQueue(user.getUsername());
         studentService.logout(user);
         user.setConnected(false);
 
